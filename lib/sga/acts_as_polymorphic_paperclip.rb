@@ -1,6 +1,9 @@
 module LocusFocus
+
   module Acts #:nodoc: all
+
     module PolymorphicPaperclip
+
       def self.included(base)
         base.extend ClassMethods
       end
@@ -59,9 +62,32 @@ module LocusFocus
           attr_accessor :data
             
           include LocusFocus::Acts::PolymorphicPaperclip::InstanceMethods
+
+          include LocusFocus::Acts::PolymorphicPaperclip::ExtentionMethods if options[:with_extention]
+
         end
+
       end
+   
+      module ExtentionMethods
+
+        require 'fileutils'
+
+        def after_save
+          super
+          FileUtils.cp assets[0].path, asset_path(true)   
+        end
+
+        def asset_path create_dir=false
+          assets_dir = File.join RAILS_ROOT, 'public', 'system', 'assets'
+          (FileUtils.mkdir_p assets_dir unless File.exists?(assets_dir)) if create_dir
+          File.join assets_dir, "#{self.wid}.sgf"
+        end
+
+      end
+
       module InstanceMethods
+
         def after_save
           super
           Asset.transaction do
@@ -90,6 +116,7 @@ module LocusFocus
             assets(true) # implicit reloading
           end
         end
+
         def override_default_styles?(filename)
           if !acts_as_polymorphic_paperclip_options[:styles].nil?
             normalised_styles = {}
@@ -107,7 +134,11 @@ module LocusFocus
             return false
           end
         end
+
       end
+
     end
+
   end
+
 end

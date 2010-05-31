@@ -56,7 +56,6 @@ class Asset < ActiveRecord::Base
   end
 
   def file_md5sum
-    #path = File.join RAILS_ROOT, 'public', self.url_without_random
     IO.popen("md5sum #{path} | awk '{print $1}'"){|f| f.gets.strip}       
   end
 
