@@ -74,7 +74,6 @@ module LocusFocus
         require 'fileutils'
 
         def copy_pic_to_assets_directory 
-          super
           FileUtils.cp assets[0].path, asset_path(true)   
         end
 
