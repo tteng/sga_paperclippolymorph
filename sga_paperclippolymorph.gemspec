@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tim.teng"]
-  s.date = %q{2010-06-01}
+  s.date = %q{2010-08-03}
   s.description = %q{gem version of paperclippolymorph for sga company}
   s.email = %q{tim.rubist@gmail.com}
   s.extra_rdoc_files = [
@@ -49,12 +49,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<paperclip>, [">= 2.3.1.1"])
+      s.add_runtime_dependency(%q<paperclip>, [">= 2.3.3"])
     else
-      s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
+      s.add_dependency(%q<paperclip>, [">= 2.3.3"])
     end
   else
-    s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
+    s.add_dependency(%q<paperclip>, [">= 2.3.3"])
   end
 end
 

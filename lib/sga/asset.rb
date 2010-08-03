@@ -1,6 +1,7 @@
-gem 'paperclip', ">=2.3.1.1"
+gem 'paperclip', ">=2.3.3"
 require 'paperclip'
 require 'digest/md5'
+include Paperclip
 
 class Asset < ActiveRecord::Base
   has_many :attachings, :dependent => :destroy

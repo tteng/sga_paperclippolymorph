@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/tteng/sga_paperclippolymorph"
     gem.authors = ["tim.teng"]
     #gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_runtime_dependency "paperclip", ">= 2.3.1.1"
+    gem.add_runtime_dependency "paperclip", ">= 2.3.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
