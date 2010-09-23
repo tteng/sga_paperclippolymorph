@@ -69,6 +69,8 @@ module LocusFocus
 
           write_inheritable_attribute(:wuid_host, options[:wuid_host]) if options[:wuid_host]
 
+          class_inheritable_reader :wuid_host
+
         end
 
       end
@@ -84,8 +86,7 @@ module LocusFocus
         def asset_path create_dir=false
           assets_dir = File.join RAILS_ROOT, 'public', 'system', 'assets'
           (FileUtils.mkdir_p assets_dir unless File.exists?(assets_dir)) if create_dir
-          wid_host = read_inheritable_attribute :wuid_host
-          sgf_file = "#{wid_host ? self.send(wid_host).wid : self.wid}.sgf"
+          sgf_file = "#{wuid_host ? self.send(wuid_host).wid : self.wid}.sgf"
           File.join assets_dir, sgf_file
         end
 
