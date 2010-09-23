@@ -18,9 +18,11 @@ module LocusFocus
             :counter_cache => options[:counter_cache],
             :styles => options[:styles]
           })
+
           class_inheritable_reader :acts_as_polymorphic_paperclip_options
 
           has_many :attachings, :as => :attachable, :dependent => :destroy
+
           has_many :assets, :through => :attachings do
             def attach(asset_id)
               asset_id = extract_id(asset_id)
@@ -65,6 +67,8 @@ module LocusFocus
 
           include LocusFocus::Acts::PolymorphicPaperclip::ExtentionMethods if options[:with_extention]
 
+          write_inheritable_attribute(:wuid_host, options[:wuid_host]) if options[:wuid_host]
+
         end
 
       end
@@ -80,7 +84,9 @@ module LocusFocus
         def asset_path create_dir=false
           assets_dir = File.join RAILS_ROOT, 'public', 'system', 'assets'
           (FileUtils.mkdir_p assets_dir unless File.exists?(assets_dir)) if create_dir
-          File.join assets_dir, "#{self.wid}.sgf"
+          wid_host = read_inheritable_attribute :wuid_host
+          sgf_file = "#{wid_host ? self.send(wid_host).wid : self.wid}.sgf"
+          File.join assets_dir, sgf_file
         end
 
       end
