@@ -4,6 +4,7 @@ require 'digest/md5'
 include Paperclip
 
 class Asset < ActiveRecord::Base
+
   has_many :attachings, :dependent => :destroy
 
   has_attached_file :data,

@@ -84,7 +84,7 @@ module LocusFocus
         end
 
         def asset_path create_dir=false
-          assets_dir = File.join RAILS_ROOT, 'public', 'system', 'assets'
+          assets_dir = File.join RAILS_ROOT, 'public', 'system', 'assets', (wuid_host ? wuid_host.wid : self.wid)[0].chr
           (FileUtils.mkdir_p assets_dir unless File.exists?(assets_dir)) if create_dir
           sgf_file = "#{wuid_host ? self.send(wuid_host).wid : self.wid}.sgf"
           File.join assets_dir, sgf_file
