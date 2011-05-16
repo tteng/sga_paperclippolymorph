@@ -13,7 +13,10 @@ class Asset < ActiveRecord::Base
                                  :small => "176x112>",
                                  :medium => "630x630>",
                                  :large => "1024x1024>"
-                               } 
+                               },
+    :path => "/system/:attachment/asset/:id_partition/:style/:filename",
+    :url  => "/system/:attachment/asset/:id_partition/:style/:filename"
+
 
   def url(*args)
     data.url(*args)

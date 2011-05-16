@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sga_paperclippolymorph}
-  s.version = "0.2.4"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tim.teng"]
-  s.date = %q{2010-11-30}
+  s.date = %q{2011-05-16}
   s.description = %q{gem version of paperclippolymorph for sga company}
   s.email = %q{tim.rubist@gmail.com}
   s.extra_rdoc_files = [
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/sga/acts_as_polymorphic_paperclip.rb",
      "lib/sga/asset.rb",
      "lib/sga/attaching.rb",
+     "lib/sga/paperclip_hack.rb",
      "lib/sga_paperclippolymorph.rb",
      "sga_paperclippolymorph.gemspec",
      "test/helper.rb",
