@@ -14,7 +14,7 @@ class Asset < ActiveRecord::Base
                                  :medium => "630x630>",
                                  :large => "1024x1024>"
                                },
-    :path => "/system/:attachment/asset/:id_partition/:style/:filename",
+    :path => ":rails_root/public/system/:attachment/asset/:id_partition/:style/:filename",
     :url  => "/system/:attachment/asset/:id_partition/:style/:filename"
 
 
